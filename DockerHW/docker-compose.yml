@@ -1,4 +1,14 @@
 version: '3'
 
 services:
-  web:
+  web: #container名稱
+    build: ./web #使用自訂image
+    ports: 
+      - "5000:5000" #對外接口5000對內街口5000
+    volumes:
+      - ./web:/app #將本地目錄./web掛載至container的/app
+    depends_on:
+      - redis #在redis啟動後再啟動web
+
+redis:
+  image: redis:latest #redis官方image
