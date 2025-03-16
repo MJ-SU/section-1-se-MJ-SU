@@ -12,3 +12,5 @@ services:
 
 redis:
   image: redis:latest #redis官方image
+
+docker-compose up
