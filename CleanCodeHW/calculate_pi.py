@@ -1,22 +1,20 @@
 import random
 
-# Constant settings
-RADIUS = 1
-NUM_POINTS = 1000000
-AREA_FACTOR = 4
-SQUARE_EXPONENT = 2
-POINT_COUNT_INCREMENT = 1
+# 常數設定
+RADIUS = 1  # 圓的半徑
+NUM_POINTS = 1_000_000  # 隨機生成的點數
+AREA_FACTOR = 4  # 區域因子
 
 inside_circle = 0
 
-# Randomly generate points and count those inside the circle
-for _ in range(1000000):
-    x = random.uniform(-1, 1)
-    y = random.uniform(-1, 1)
-    if x**2 + y**2 <= 1**2:
+# 隨機生成點並計算圓內的點數
+for _ in range(NUM_POINTS):
+    x = random.uniform(-RADIUS, RADIUS)
+    y = random.uniform(-RADIUS, RADIUS)
+    if x**2 + y**2 <= RADIUS**2:
         inside_circle += 1
 
-# Estimate pi based on the number of points inside the circle
-pi_estimate = (inside_circle / 1000000) * 4
+# 根據圓內點數估算 π 值
+pi_estimate = (inside_circle / NUM_POINTS) * AREA_FACTOR
 
 print(f"Estimated value of pi is: {pi_estimate}")
